@@ -1,0 +1,29 @@
+name: Post to Instagram
+
+on:
+  workflow_dispatch:  # Manual trigger
+
+jobs:
+  post-to-instagram:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Public Repo
+        uses: actions/checkout@v4
+
+      - name: Clone Private Repo
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          git clone https://$GH_TOKEN@github.com/iArchitSharma/thebrief-insta-uploader.git
+          cd thebrief-insta-uploader
+
+      - name: Install Dependencies
+        run: |
+          cd thebrief-insta-uploader
+          npm install
+
+      - name: Run Instagram Posting Script
+        run: |
+          cd thebrief-insta-uploader
+          node api/post-to-instagram.js
