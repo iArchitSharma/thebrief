@@ -14,10 +14,10 @@ jobs:
       - name: Checkout Public Repo
         uses: actions/checkout@v4
 
-      - name: Delay for 10 minutes
+      - name: Delay for 5 minutes
         run: |
-          echo "Waiting for 10 minutes..."
-          sleep 600  # 600 seconds = 10 minutes
+          echo "Waiting for 5 minutes..."
+          sleep 300  # 300 seconds = 5 minutes
 
       - name: Clone Private Repo
         env:
