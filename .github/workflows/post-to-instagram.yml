@@ -2,6 +2,9 @@ name: Post to Instagram
 
 on:
   workflow_dispatch:  # Manual trigger
+  push:
+    paths:
+      - 'publish.json'  # Trigger if this file is updated
 
 jobs:
   post-to-instagram:
